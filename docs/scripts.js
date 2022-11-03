@@ -2,8 +2,10 @@ var UNITS;
 var HERO;
 
 const map = document.createElement('div');
-map.style.width = '1500px';
-map.style.height = '500px';
+map.style.width = '100vw';
+map.style.height = '100vh';
+map.style.margin = 'none';
+map.style.backgroundSize = 'contain';
 map.style.backgroundImage = 'url("assets/background.png")';
 document.body.appendChild(map);
 
@@ -83,8 +85,8 @@ class Unit{
 			this.div.id = this.id;
 			map.appendChild(this.div);
 
-			this.xbind = [100, 1400];
-			this.ybind = [0, 500];
+			this.xbind = [100, 800];
+			this.ybind = [0, 300-this.h];
 
 	}
 
@@ -132,8 +134,8 @@ class HpBar{
 		this.div = document.createElement('div');
 
 		this.div.style.position = 'absolute';
-		this.div.style.left = '300px';
-		this.div.style.top = '420px';
+		this.div.style.left = '270px';
+		this.div.style.top = '320px';
 		this.div.style.width = '400px';
 		this.div.style.height = '50px';
 		this.div.style.backgroundColor = 'red';
@@ -168,10 +170,10 @@ class HpBar{
 class Hero extends Unit{
 	constructor(x, y, w, h, img, dx = 0, dy = 0){
 		super(x, y, w, h, img, dx, dy);
-		this.ybind = [0,250];
+		this.ybind = [0,180];
 
 		this.sword = new MeleeAttack(this, this.x+this.w, 280, 50, 20, 'test');
-		this.sword.ybind = [h/2, 280];
+		this.sword.ybind = [h/2, 210];
 
 		this.hp = 20;
 		this.spd = 2;
@@ -231,6 +233,7 @@ class Enemy extends Unit{
 		this.spawn();
 		GAME.Ecount++;
 		this.enemy = true;
+		this.ybind = [-200, 800]
 
 
 	}
@@ -261,7 +264,7 @@ class Enemy extends Unit{
 		console.log(me.dx);
 		me.ybind = [0, this.y];
 		me.ready = true;
-		me.xbind = [100, 1400];
+		me.xbind = [100, 800];
 	}
 
 
@@ -360,7 +363,7 @@ class Enemy extends Unit{
 }
 
 class Slime extends Enemy{
-	constructor(x, y = 380, w = 50, h = 50, img = 'normalSlime', dx = 0, dy = 0){
+	constructor(x, y = 300, w = 50, h = 50, img = 'normalSlime', dx = 0, dy = 0){
 		super(x, y, w, h, img, dx, dy);
 		this.hp = 5;
 		this.spd = 1;
@@ -371,7 +374,7 @@ class Slime extends Enemy{
 
 	spawn(){
 		let me = this;
-		me.dy = -5;
+		me.dy = -1;
 		setTimeout(function(){me.activate(me)}, 700)
 	}
 }
@@ -686,10 +689,10 @@ function newgame(){
 
   window.requestAnimationFrame(animateGame);
 
-	new Menu(30, 400, 100, 100, function(){HERO.left()});
-	new Menu(150, 400, 100, 100, function(){HERO.right()});
-	new Menu(870, 400, 100, 100, function(){HERO.jump()});
-	new Menu(740, 400, 100, 100, function(){HERO.hop()});
+	new Menu(30, 300, 100, 100, function(){HERO.left()});
+	new Menu(150, 300, 100, 100, function(){HERO.right()});
+	new Menu(770, 300, 100, 100, function(){HERO.jump()});
+	new Menu(640, 300, 100, 100, function(){HERO.hop()});
 
 	setInterval(GAME.spawn, 1000);
 
