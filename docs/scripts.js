@@ -371,7 +371,7 @@ class Slime extends Enemy{
 
 	spawn(){
 		let me = this;
-		me.dy = -1;
+		me.dy = -5;
 		setTimeout(function(){me.activate(me)}, 700)
 	}
 }
