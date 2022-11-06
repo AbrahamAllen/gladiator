@@ -83,7 +83,7 @@ class Unit{
 			this.div = document.createElement('div');
 			this.div.style.position = 'absolute';
 			this.div.id = this.id;
-			map.appendChild(this.div);
+			document.body.appendChild(this.div);
 
 			this.xbind = [100, 800];
 			this.ybind = [0, 300-this.h];
