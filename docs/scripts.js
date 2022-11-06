@@ -3,7 +3,7 @@ var HERO;
 
 const map = document.createElement('div');
 map.style.width = '900px';
-map.style.height = '500px';
+map.style.height = '300px';
 map.style.margin = 'none';
 map.style.backgroundSize = 'contain';
 map.style.backgroundImage = 'url("assets/background.png")';
