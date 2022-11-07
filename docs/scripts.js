@@ -2,8 +2,8 @@ var UNITS;
 var HERO;
 
 const map = document.createElement('div');
-map.style.width = '900px';
-map.style.height = '300px';
+map.style.width = '100vw';
+map.style.height = '100vh';
 map.style.margin = 'none';
 map.style.backgroundSize = 'contain';
 map.style.backgroundImage = 'url("assets/background.png")';
